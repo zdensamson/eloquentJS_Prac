@@ -33,12 +33,6 @@ let range = function(start, end, step){
 
 }
 
-console.log(range(5, 2, -1));
-console.log(range(10, 0, -3));
-console.log(range(10, 0, -11));
-console.log(range(1, 10, 2));
-console.log(range(1, 10, 15));
-
 
 let sum = function(array){
     let numberStorage = 0;
@@ -49,3 +43,25 @@ let sum = function(array){
 }
 
 // console.log(sum(range(1,10)));
+let reverseArray = function(array){
+    let backwardArray = [];
+    for(let element of array){
+        backwardArray.unshift(element);
+    }
+    return backwardArray;
+};
+
+// console.log(reverseArray([1,2,3]));
+
+let reverseArrayInPlace = function(array){
+    let evenFlag = array.length % 2;
+    if(evenFlag == 0){
+        console.log("even");
+    }else{
+        console.log("odd");
+        let halfWayPoint = (array.length /2)-.5;
+        console.log(array[halfWayPoint]);
+    }
+
+};
+console.log(reverseArrayInPlace([1,2,3,4,5,6,7,8,9]));
