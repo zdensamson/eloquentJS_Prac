@@ -53,15 +53,26 @@ let reverseArray = function(array){
 
 // console.log(reverseArray([1,2,3]));
 
-let reverseArrayInPlace = function(array){
-    let evenFlag = array.length % 2;
-    if(evenFlag == 0){
-        console.log("even");
-    }else{
-        console.log("odd");
-        let halfWayPoint = (array.length /2)-.5;
-        console.log(array[halfWayPoint]);
-    }
+// let reverseArrayInPlace = function(array){
+//     let evenFlag = array.length % 2;
+//     if(evenFlag == 0){
+//         console.log("even");
+//     }else{
+//         console.log("odd");
+//         let halfWayPoint = (array.length /2)-.5;
+//         console.log(array[halfWayPoint]);
+//     }
+// };
 
+let reverseArrayInPlace = function(array){
+    let temp;
+    for(let i = 0; i < array.length / 2; i++){
+        // the order of the below three lines of code MATTERS
+        temp = array[i];
+        array[i] = array[array.length - 1 - i];
+        array[array.length - 1 - i] = temp;
+  
+    }
+    return array;
 };
-console.log(reverseArrayInPlace([1,2,3,4,5,6,7,8,9]));
+console.log(reverseArrayInPlace([1,2,3,4,5]));
