@@ -33,7 +33,6 @@ let range = function(start, end, step){
 
 }
 
-
 let sum = function(array){
     let numberStorage = 0;
     for(let element of array){
@@ -51,19 +50,6 @@ let reverseArray = function(array){
     return backwardArray;
 };
 
-// console.log(reverseArray([1,2,3]));
-
-// let reverseArrayInPlace = function(array){
-//     let evenFlag = array.length % 2;
-//     if(evenFlag == 0){
-//         console.log("even");
-//     }else{
-//         console.log("odd");
-//         let halfWayPoint = (array.length /2)-.5;
-//         console.log(array[halfWayPoint]);
-//     }
-// };
-
 let reverseArrayInPlace = function(array){
     let temp;
     for(let i = 0; i < array.length / 2; i++){
@@ -75,4 +61,24 @@ let reverseArrayInPlace = function(array){
     }
     return array;
 };
-console.log(reverseArrayInPlace([1,2,3,4,5]));
+
+let arrayToList = function(array){
+    console.log(array.length);
+    for(let i = 0; i < array.length; i++){
+        
+        if(i == 0){
+            list = {value: array[array.length - 1 - i], rest: null}
+        }else{
+            list = {value: array[array.length - 1 - i], rest: list};
+        }
+    }
+    return list;
+};
+
+let listToArray = function(list){
+
+};
+
+console.log(arrayToList([1,2,3]));
+let listExample = {value: 1, rest: {value: 2, rest: {value: 3, rest: null}}};
+console.log(listExample);
