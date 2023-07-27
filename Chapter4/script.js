@@ -76,9 +76,27 @@ let arrayToList = function(array){
 };
 
 let listToArray = function(list){
+    let outputArray = [];
+    let listLength = 0;
+    // create a copy of LIST to iterate over and discover the "length" of the list
+    let tempList = list;
+    // finds how many times we need to expand to REST before REST = NULL
+    while(tempList.rest != null){
+        tempList = tempList.rest;
+        listLength++;
+    }
+    // the above while loop will always fall short by one
+    listLength++;
 
+    // expand REST the amount of times held by the listLength value
+    for(let i = 0; i < listLength; i++){
+        outputArray.push(list.value);
+        list = list.rest;
+    }
+    console.log(outputArray); 
 };
 
-console.log(arrayToList([1,2,3]));
+// console.log(arrayToList([1,2,3]));
 let listExample = {value: 1, rest: {value: 2, rest: {value: 3, rest: null}}};
-console.log(listExample);
+// console.log(listExample);
+listToArray(listExample);
