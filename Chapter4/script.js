@@ -99,4 +99,29 @@ let listToArray = function(list){
 // console.log(arrayToList([1,2,3]));
 let listExample = {value: 1, rest: {value: 2, rest: {value: 3, rest: null}}};
 // console.log(listExample);
-listToArray(listExample);
+//istToArray(listExample);
+
+
+// try two 09-24-23
+let range2 = function(start, end){
+    let rangeArray = []
+    let nextNumber = start;
+    while (nextNumber < end + 1){
+        rangeArray.push(nextNumber);
+        nextNumber = nextNumber + 1;
+    } 
+
+    return rangeArray;
+}
+
+let sum2 = function(numArray){
+    let numberHolder = 0;
+    for (let number of numbArray){
+        numberHolder = numberHolder + number;
+    }
+    return numberHolder;
+}
+
+console.log(range2(1,10));
+
+console.log(sum(range(1,10)));
