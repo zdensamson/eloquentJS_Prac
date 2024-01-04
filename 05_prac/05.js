@@ -38,8 +38,12 @@ function noisy(f){
    } 
 };
 
-
 noisy(Math.min)(3, 2, 1);
+
+// noisy can also be stored into a function as follows:
+let noisyFunction = noisy(Math.min);
+// and we can call this newly created variable like so:
+noisyFunction(1,2,3)
 
 
 
