@@ -17,14 +17,14 @@ function biggerThan(n){
    }
 };
 
-let greaterThan10 = greaterThan(10);
-console.log(greaterThan10(11));
+// let greaterThan10 = greaterThan(10);
+// console.log(greaterThan10(11));
 
-let biggerThan10 = biggerThan(10);
-console.log(biggerThan10(11));
+// let biggerThan10 = biggerThan(10);
+// console.log(biggerThan10(11));
 
-let largerThan10 = largerThan(10);
-console.log(largerThan10(11));
+// let largerThan10 = largerThan(10);
+// console.log(largerThan10(11));
 
 
 //HOF EXAMPLE 2
@@ -38,19 +38,42 @@ function noisy(f){
    } 
 };
 
-noisy(Math.min)(3, 2, 1);
+// noisy(Math.min)(3, 2, 1);
 
 // noisy can also be stored into a function as follows:
-let noisyFunction = noisy(Math.min);
+// let noisyFunction = noisy(Math.min);
 // and we can call this newly created variable like so:
-noisyFunction(1,2,3)
+// noisyFunction(1,2,3)
 
 
 
 
 
+// REST operator EXAMPLE
+// TAKES a non-limited list of arguments and converts it to an array for the function to use. 
+// probably useful if you have a variable number of arguments comming in and you don't want to pre-define how long your array is allowed to be
+let adder = function(...theArgs){
+   console.log('SUP bro');
+   let total = 0;
+   for(let i = 0; i < theArgs.length; i++){
+      total = total + theArgs[i];
+   }
+   console.log(total);
+}
 
+adder(1,2,3);
 
+// REST example MDN
+function sum(...theArgs) {
+   let total = 0;
+   for (const arg of theArgs) {
+     total += arg;
+   }
+   return total;
+ }
+ 
+ console.log(sum(1, 2, 3));
+ // Expected output: 6
 
 
 
@@ -65,9 +88,9 @@ function unless(test, then) {
    if (!test) then();
 }
 
-repeat(3, n => {
-   unless(n % 2 == 1, () =>{
-      console.log(n ,"is even")
-   });
-});
+// repeat(3, n => {
+//    unless(n % 2 == 1, () =>{
+//       console.log(n ,"is even")
+//    });
+// });
 
