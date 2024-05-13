@@ -94,3 +94,26 @@ function unless(test, then) {
 //    });
 // });
 
+
+//FILTERING ARRAYS EXAMPLE
+let fliter = function(array, test){
+   let passed = [];
+   for(let element of array) {
+      if(test(element) == true ){
+         passed.push(element)
+      }
+   }
+};
+
+let test1 = function(number){
+   if(number > 0) {
+      return true;
+   }
+   else {
+      return false;
+   }
+}
+
+console.log(test1(5));
+
+console.log(fliter([1,1,0], test1));
