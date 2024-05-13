@@ -99,10 +99,12 @@ function unless(test, then) {
 let fliter = function(array, test){
    let passed = [];
    for(let element of array) {
-      if(test(element) == true ){
-         passed.push(element)
+      console.log(element);
+      if(test(element)){
+         passed.push(element);
       }
    }
+   return passed;
 };
 
 let test1 = function(number){
@@ -116,4 +118,4 @@ let test1 = function(number){
 
 console.log(test1(5));
 
-console.log(fliter([1,1,0], test1));
+console.log(fliter([1,2,0], test1));
