@@ -1,3 +1,16 @@
+// these are my thoughts on chap 5
+// with a higher order function I can build a generic function like "greaterThan"-- which is essentially builds a "function factory"
+// I'm saying "give me a function that can create other functions that will check any argument (NUMBER) given by a user and it will measure against a spepcific value"
+// by creating greatherThan10-- i've essentially made an infinite amount of devices that will check if someting is larger than 10-- a bunch of fire alarms that go off if temperatures hit a certain point
+
+// in the paragraph above-- I believe that is how I understand the concept of a "function that can make other functions-- a factory that can make smaller specific factories"
+
+// LEARN THE NOISY FUnCTION
+let lilNoisy = function(){
+   
+}
+
+
 // HOF EXAMPLE 1
 // the three functions below operate EXACTLY the same
 function greaterThan(n){
