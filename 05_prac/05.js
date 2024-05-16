@@ -7,7 +7,7 @@
 
 // LEARN THE NOISY FUnCTION
 let lilNoisy = function(){
-   
+
 }
 
 
@@ -41,6 +41,9 @@ function biggerThan(n){
 
 
 //HOF EXAMPLE 2
+// FOR NOISY-- we are creating a function that takes any function as its argument "f"
+// whatever function we give it we will also give that "lower level function" its own arguments "...args"
+// These ...args use the "rest" parameter to indicate placing each comma seperated argument into a "bottomless array"
 function noisy(f){
    return (...args) => {
       console.log("calling with", args);
@@ -74,7 +77,7 @@ let adder = function(...theArgs){
    console.log(total);
 }
 
-adder(1,2,3);
+// adder(1,2,3);
 
 // REST example MDN
 function sum(...theArgs) {
@@ -85,27 +88,44 @@ function sum(...theArgs) {
    return total;
  }
  
- console.log(sum(1, 2, 3));
+//  console.log(sum(1, 2, 3));
  // Expected output: 6
 
+// HOF EXAMPLE 3
+
+function unless(test, then){
+   if (!test) then();
+};
+// my initial read of this is we pass the function "unless" a test and a FUNCTION
+// IF the test is failed-- THEN execute the FUNCTION given as an argument
 
 
-function repeat(n, action){
+function repeat(n, action) {
    for(let i = 0; i < n; i++){
       action(i);
    }
-}
+};
+// pass the function repeat a single number (our repetition counter) and a function to be excecuted each repitition
+// while i is less than our number given as an argument (n)-- continue to execute the action (function)
 
 
-function unless(test, then) {
-   if (!test) then();
-}
+repeat(3, n => {
+   unless(n % 2 == 1, ()=> {
+      console.log(n, "is even")
+   })
+});
 
-// repeat(3, n => {
-//    unless(n % 2 == 1, () =>{
-//       console.log(n ,"is even")
-//    });
-// });
+// you can also write "repeat" like this:
+[0,1,2,3].forEach(n => {
+   if (n%2 != 1){
+      console.log(n, "is even");
+   }
+});
+// TOP DOWN 
+// highest function repeat is given a counter of 3 and a function to be repeated 3 times
+// the function given is "unless" -- which takes a test and a function to be executed if the test is failed
+// "3" actually becomes "n" in "unless"
+
 
 
 //FILTERING ARRAYS EXAMPLE
@@ -129,6 +149,6 @@ let test1 = function(number){
    }
 }
 
-console.log(test1(5));
+// console.log(test1(5));
 
-console.log(fliter([1,2,0], test1));
+// console.log(fliter([1,2,0], test1));
