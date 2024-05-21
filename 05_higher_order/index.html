@@ -19,11 +19,28 @@ function textScripts(text) {
 }
 
 
+// produces an array of all scripts that are read "left-to-right" (ltr)
 let ltrScripts = SCRIPTS.filter(s => s.direction == "ltr");
 let ttbScripts = SCRIPTS.filter(s => s.direction == "ttb");
 let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
 
 console.log(rtlScripts.map(s => s.name));
+
+let reduce = function(array, combineFunc, start){
+  let currentNum = start;
+  for(let element of array){
+    currentNum = combineFunc(currentNum, element);
+  }
+  return currentNum;
+}
+
+let sumCombine = function(a,b){
+  // the return statement is needed to push out a+b's value to the for loop above
+ return  a + b;
+};
+
+console.log(reduce([1,2,3,4], sumCombine, 0));
+
 
 // console.log(ttbScripts);
 // console.log(ltrScripts);
