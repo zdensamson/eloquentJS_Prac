@@ -35,6 +35,9 @@ let reduce = function(array, combineFunc, start){
   return currentNum;
 }
 
+// the above function does the same thing as this: 
+// [ANY ARRAY].reduce((a, b) => a + b)
+
 let sumCombine = function(a,b){
   // the return statement is needed to push out a+b's value to the for loop above
  return  a + b;
@@ -42,6 +45,67 @@ let sumCombine = function(a,b){
 
 console.log(reduce([1,2,3,4], sumCombine, 0));
 
+// we can also call reduce as a stored array method
+// written as --> 
+console.log([1, 2, 3, 4].reduce((a, b) => a + b));
+// this does the exact same thing as the setup from our user defined "reduce" function
+
+
+// REDUCE EXAMPLES
+let characterCount = function(script){
+  // return script[1].ranges; --> this would return the ranges property from the second object stored in the SCRIPTS array
+  // the ranges property is simply another array that contains multiple arrays with two numbers (a lower and upper limit)
+  // something like this --> [[5,9], [16,33]]
+  return script.ranges.reduce((count, [from, to])=> {
+    return count + (to - from);
+  }, 0);
+}
+
+// example range property -->     ranges: [[71424, 71450], [71453, 71468], [71472, 71488]],
+
+
+// THIS IS WHAT WE"RE DOING TO REDUCE the ranges
+let num1 = -71424 +71450;
+let num2 = -71453 + 71468;
+let num3 = -71472 + 71488;
+
+
+console.log('FOCUS--------------------');
+console.log(num1);
+console.log(num2);
+console.log(num3);
+console.log(num3 + num2 + num1);
+
+let objRange  =
+{
+  ranges: [[71424, 71450], [71453, 71468], [71472, 71488]],
+  fakeName: 'Daryl'
+}
+
+console.log('FOCUS--------------------')
+
+console.log(characterCount(objRange));
+
+console.log('FOCUS--------------------')
+// we call the above function 
+let oneTimeScripFunct = SCRIPTS.reduce((a, b) => {
+  return characterCount(a) < characterCount(b) ? b : a;
+})
+
+// call the above variable
+console.log(oneTimeScripFunct);
+
+//console.log(characterCount(SCRIPTS));
+
+function arraySum(arr) {
+    const startingSum = 0;
+
+    return arr.reduce((sum, currentValue) => {
+        return sum + currentValue;
+    }, startingSum);
+}
+
+console.log(arraySum([1, 2, 3, 4, 5]));
 
 // just reading on reduce function
 // console.log(ttbScripts);
