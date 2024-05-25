@@ -25,7 +25,7 @@ let ltrScripts = SCRIPTS.filter(s => s.direction == "ltr");
 let ttbScripts = SCRIPTS.filter(s => s.direction == "ttb");
 let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
 
-console.log(rtlScripts.map(s => s.name));
+// console.log(rtlScripts.map(s => s.name));
 
 let reduce = function(array, combineFunc, start){
   let currentNum = start;
@@ -43,23 +43,16 @@ let sumCombine = function(a,b){
  return  a + b;
 };
 
-console.log(reduce([1,2,3,4], sumCombine, 0));
+// console.log(reduce([1,2,3,4], sumCombine, 0));
 
 // we can also call reduce as a stored array method
 // written as --> 
-console.log([1, 2, 3, 4].reduce((a, b) => a + b));
+// console.log([1, 2, 3, 4].reduce((a, b) => a + b));
 // this does the exact same thing as the setup from our user defined "reduce" function
 
 
 // REDUCE EXAMPLES
-let characterCount = function(script){
-  // return script[1].ranges; --> this would return the ranges property from the second object stored in the SCRIPTS array
-  // the ranges property is simply another array that contains multiple arrays with two numbers (a lower and upper limit)
-  // something like this --> [[5,9], [16,33]]
-  return script.ranges.reduce((count, [from, to])=> {
-    return count + (to - from);
-  }, 0);
-}
+
 
 // example range property -->     ranges: [[71424, 71450], [71453, 71468], [71472, 71488]],
 
@@ -70,11 +63,24 @@ let num2 = -71453 + 71468;
 let num3 = -71472 + 71488;
 
 
-console.log('FOCUS--------------------');
-console.log(num1);
-console.log(num2);
-console.log(num3);
-console.log(num3 + num2 + num1);
+
+// console.log(num1);
+// console.log(num2);
+// console.log(num3);
+// console.log(num3 + num2 + num1);
+
+
+let characterCount = function(script){
+  // return script[1].ranges; --> this would return the ranges property from the second object stored in the SCRIPTS array
+  // the ranges property is simply another array that contains multiple arrays with two numbers (a lower and upper limit)
+  // something like this --> [[5,9], [16,33]]
+
+  // effectively it is doing this => (71450 - 71424) + (71468 - 71453) + ... 
+  // return script.ranges.reduce((count, [from, to]) => {return count + (to - from)}, 0);
+  return [[71424, 71450], [71453, 71468], [71472, 71488]]
+        // CALL BACK-----------CALL BACK-----CALL BACK//--initial val = 0
+  .reduce((count, [from, to]) => {return count + (to - from)}, 0);
+}
 
 let objRange  =
 {
@@ -82,18 +88,17 @@ let objRange  =
   fakeName: 'Daryl'
 }
 
-console.log('FOCUS--------------------')
 
 console.log(characterCount(objRange));
+// characterCount(objRange);
 
-console.log('FOCUS--------------------')
 // we call the above function 
 let oneTimeScripFunct = SCRIPTS.reduce((a, b) => {
   return characterCount(a) < characterCount(b) ? b : a;
 })
 
 // call the above variable
-console.log(oneTimeScripFunct);
+// console.log(oneTimeScripFunct);
 
 //console.log(characterCount(SCRIPTS));
 
@@ -101,11 +106,12 @@ function arraySum(arr) {
     const startingSum = 0;
 
     return arr.reduce((sum, currentValue) => {
+      // console.log(sum)
         return sum + currentValue;
     }, startingSum);
 }
 
-console.log(arraySum([1, 2, 3, 4, 5]));
+
 
 // just reading on reduce function
 // console.log(ttbScripts);
