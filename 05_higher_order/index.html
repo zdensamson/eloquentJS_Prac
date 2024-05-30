@@ -71,6 +71,8 @@ let num3 = -71472 + 71488;
 // console.log(num3 + num2 + num1);
 
 
+
+// I UNDERSTAND THIS
 let characterCount = function(script){
   // return script[1].ranges; --> this would return the ranges property from the second object stored in the SCRIPTS array
   // the ranges property is simply another array that contains multiple arrays with two numbers (a lower and upper limit)
@@ -78,7 +80,7 @@ let characterCount = function(script){
 
   // effectively it is doing this => (71450 - 71424) + (71468 - 71453) + ... 
   // return script.ranges.reduce((count, [from, to]) => {return count + (to - from)}, 0);
-  return [[71424, 71450], [71453, 71468], [71472, 71488]]
+  return script.ranges
         // CALL BACK-----------CALL BACK-----CALL BACK//--initial val = 0
   .reduce((count, [from, to]) => {return count + (to - from)}, 0);
 }
@@ -112,8 +114,33 @@ function arraySum(arr) {
     }, startingSum);
 }
 
+// REDUCE LOGIC
+// the array below represents a shopping cart
+let items = [
+  {product: 'Jeans', price: 50},
+  {product: 'Shirt', price: 10},
+  {product: 'Hat', price: 15},
+  {product: 'Tie', price: 5},
+]
+// we use reduce to combine all the values from an array into a single value
+// in this case we want the total price of the users "cart" (above)
 
+// the ARRAY MEHTOD reduce takes two arguments
+// ARGUMENT 1 = FUNCTION
+// ARGUMENT 2 = index of array to start at
+// the FUNCTION in argument one takes two arguments
+// ARGUMENT 1 = the "accumulator" -- this is the place holder for the single value we want returned from reduce-- in this case the "total price"
+// ARGUMENT 2 = element "i" of the Array reduce is being performed on
+let totalPrice = items.reduce((priceHolder, item)=>{
+  return priceHolder + item.price;
+},0)
 
+// over the first run -- priceHolder is given the value of the initial index position we pass to it -- in this case 0 is the beginning price we want held
+// then we add 0 to the first price -- 50 dollar jeans
+// on the next run -- priceHolder equals 50 and we add it to the 10 dollar shirt
+// 
+
+console.log(totalPrice);
 // just reading on reduce function
 // console.log(ttbScripts);
 // console.log(ltrScripts);
