@@ -82,7 +82,7 @@ let characterCount = function(script){
   // return script.ranges.reduce((count, [from, to]) => {return count + (to - from)}, 0);
   return script.ranges
         // CALL BACK-----------CALL BACK-----CALL BACK//--initial val = 0
-  .reduce((count, [from, to]) => {return count + (to - from)}, 0);
+  .reduce((count, [a, b]) => {return count + (b - a)}, 0);
 }
 
 let objRange  =
@@ -93,6 +93,8 @@ let objRange  =
 
 
 console.log(characterCount(objRange));
+
+
 // characterCount(objRange);
 
 // we call the above function 
@@ -138,9 +140,73 @@ let totalPrice = items.reduce((priceHolder, item)=>{
 // over the first run -- priceHolder is given the value of the initial index position we pass to it -- in this case 0 is the beginning price we want held
 // then we add 0 to the first price -- 50 dollar jeans
 // on the next run -- priceHolder equals 50 and we add it to the 10 dollar shirt
-// 
 
-console.log(totalPrice);
+
+// ABSTRACTION CHALLENGE -- WRITE A FUNCTION THAT TAKES as an argument how many objects you want to apply charachterCoutnt2 in the fakeSCRIPTS array 
+
+
+
+let fakeSCRIPTS  = [
+{
+    name: "Adlam",
+    ranges: [[125184, 125259], [125264, 125274], [125278, 125280]],
+    direction: "rtl",
+    year: 1987,
+    living: true,
+    link: "https://en.wikipedia.org/wiki/Fula_alphabets#Adlam_alphabet"
+  },
+  {
+    name: "Caucasian Albanian",
+    ranges: [[66864, 66916], [66927, 66928]],
+    direction: "ltr",
+    year: 420,
+    living: false,
+    link: "https://en.wikipedia.org/wiki/Caucasian_Albanian_alphabet"
+  },
+  {
+    name: "Ahom",
+    ranges: [[71424, 71450], [71453, 71468], [71472, 71488]],
+    direction: "ltr",
+    year: 1250,
+    living: false,
+    link: "https://en.wikipedia.org/wiki/Ahom_alphabet"
+  },
+]
+// FINAL REDUCE PUSH
+
+function characterCount2(script) {
+  
+  return script.ranges.reduce((count, [a, b]) => {
+    return count + (b - a);
+  }, 0);
+};
+
+//FINAL PUSH TEST
+console.log('FINAL PUSH TEST---------------')
+console.log(characterCount2(fakeSCRIPTS[0]));
+console.log(characterCount2(fakeSCRIPTS[1]));
+console.log(characterCount2(fakeSCRIPTS[2]));
+console.log('FINAL PUSH TEST---------------')
+
+//FINAL PUSH TEST
+
+console.log(fakeSCRIPTS.reduce((a, b) => {
+
+  // if characterCount b is bigger than a -- ? TRUE : FALSE
+  return characterCount2(a) < characterCount2(b) ? b : a;
+}));
+
+
+console.log(
+  fakeSCRIPTS.reduce((a, b) => {
+
+// if characterCount b is bigger than a -- ? TRUE : FALSE
+return characterCount2(a) < characterCount2(b) ? b  : a ;
+}, fakeSCRIPTS[0])
+);
+
+
+// console.log(totalPrice);
 // just reading on reduce function
 // console.log(ttbScripts);
 // console.log(ltrScripts);
