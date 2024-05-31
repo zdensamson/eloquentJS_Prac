@@ -190,6 +190,11 @@ console.log('FINAL PUSH TEST---------------')
 
 //FINAL PUSH TEST
 
+
+// the reduce HERE is taking the first and second object from the fakeSCRIPTS array
+// it runs the characterCount() function on both objects
+// whichever object returns the highest value takes the place of the accumulator to be compared to the next item in the array to be "transformed" via charachterCount2()
+// INEVITABLY reduce returns one value-- in this case the entire object that contains the largest range (most charachters) -- in our example ADLAM
 console.log(fakeSCRIPTS.reduce((a, b) => {
 
   // if characterCount b is bigger than a -- ? TRUE : FALSE
