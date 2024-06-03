@@ -183,7 +183,7 @@ function characterCount2(script) {
 
 //FINAL PUSH TEST
 console.log('FINAL PUSH TEST---------------')
-console.log(characterCount2(fakeSCRIPTS[0]));
+console.log(`ADLAM = ${characterCount2(fakeSCRIPTS[0])}`);
 console.log(characterCount2(fakeSCRIPTS[1]));
 console.log(characterCount2(fakeSCRIPTS[2]));
 console.log('FINAL PUSH TEST---------------')
@@ -209,6 +209,18 @@ console.log(
 return characterCount2(a) < characterCount2(b) ? b  : a ;
 }, fakeSCRIPTS[0])
 );
+
+
+
+let biggest = null;
+for (let script of fakeSCRIPTS) {
+  if (biggest == null || characterCount2(biggest) < characterCount2(script)) {
+    biggest = script
+  }
+}
+
+console.log('BIGGEST FUNC')
+console.log(biggest)
 
 
 // console.log(totalPrice);
